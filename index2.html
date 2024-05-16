@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //bejme njE Promise ne funskioonin cookPizza()
+        function cookPizza(){
+        console.log("Cooking Pizza...")
+        return new Promise(resolve => {
+            setTimeout(() => {
+                console.log("Pizza is ready!")
+                resolve("Delicious Pizza");
+            },5000) //stimulating 5sec for cooking
+        });
+    } 
+
+    //bejm funksione te ndryshme
+    function game(){
+        console.log("Playing games...")
+    }
+
+    function draw(){
+        console.log("Drawing...")
+    }
+
+    function read(){
+        console.log("Reading...")
+    }
+
+    function chat(){
+        console.log("Chatting...")
+    }
+
+    // async/await
+
+    async function pizzaParty(){
+        console.log("Let us start the party!");
+
+        //start cooking the pizza, but we dont have to wait for it to finish
+        let PizzaPromise = cookPizza()
+
+        //while we wait for the pizza we can do other things
+
+        game()
+        draw()
+        read()
+        chat()
+
+        //now lets wait for the pizza to finish
+        let piza = await PizzaPromise
+
+        //the piza is ready
+        console.log(`Yay! Time to eat ${piza}!`)
+    }
+    pizzaParty()
+    </script>
+   
+</body>
+</html>

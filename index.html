@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>upload images</h2>
+    <form id="uploadform" action="">
+        <input type="file" id="imagesinput" accept="images*/" required>
+        <button type="button" onclick="clickSIZEimg()">Upload Images</button>
+    </form>
+    <p id="messages"></p>
+    <script>
+        // async- i bon tasks me u zbatu ne te njejten kohe(multitasking-ngjashem)
+
+        async function clickSIZEimg(){
+            let imageINPUT = document.getElementById("imagesinput")
+            let images = imageINPUT.files[0] //0- foton e fundit qe e bon upload
+
+            //check if image is selected
+            if(!images){
+                showMessage("Please select an image.")
+                return;
+            }
+
+            //check the size of the image
+            //konvertimin e 5megabite ne kilobite edhe byte
+            if(images.size > 5* 1024 *1024){
+                showMessage("The size is larger than 5MB")
+            }
+            else{
+                showMessage("Upload successfully completed")
+            }
+        }
+        function showMessage(x){ //parametri 'x' pa vlere, ne funksionet nalt cka shkrujm ruhen si parametr x--"The size is larger than 5MB"
+            document.getElementById('messages').textContent =x
+        }
+        
+    </script>
+</body>
+</html>
